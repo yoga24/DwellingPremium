@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Dwelling Premium</string>
+
+    <string name="hint_edit_sum_insured">Sum Insured</string>
+    <string name="hint_edit_years_insured">Years</string>
+    <string name="main_calculate_premium_button">Calculate Premium</string>
+
+    <string name="sum_insured_extra_key">sumInsured</string>
+
+
+    <!-- Detail Fragment Hint -->
+    <string name="detail_hint_sum_insured">Sum Insured</string>
+    <string name="detail_hint_years">Insured Period</string>
+    <string name="detail_hint_basic_premium">Basic Premium</string>
+    <string name="detail_hint_stfi">STFI</string>
+    <string name="detail_hint_eq">EQ</string>
+    <string name="detail_hint_discounted_premium">Discount On Basic Premium @ %1%</string>
+    <string name="detail_hint_premium_total">Total Premium</string>
+    <string name="detail_hint_service_tax">Service Tax @ 15%</string>
+    <string name="detail_hint_grand_total">Grand Total</string>
+
+</resources>
