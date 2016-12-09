@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (sumInsuredEditText.getText().toString().isEmpty()) {
                     sumTextInputLayout.setError("Sum Insured cannot be empty");
-                } else if (Integer.parseInt(sumInsuredEditText.getText().toString()) == 0) {
+                } else if (Long.parseLong(sumInsuredEditText.getText().toString()) == 0) {
                     sumTextInputLayout.setError("Invalid Value");
                 } else if (yearsInsuredEditText.getText().toString().isEmpty()) {
                     yearsTextInputLayout.setError("Years cannot be empty");
@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
                     } catch (Exception e) {
                         Log.e(LOG_TAG, "Error occurred in parsing input string");
+                        e.printStackTrace();
                         Toast.makeText(MainActivity.this, "Error : Check Input String", Toast.LENGTH_LONG).show();
                     }
                 }
@@ -78,14 +79,14 @@ public class MainActivity extends AppCompatActivity {
     private void calculatePremiumValues(PremiumModel premiumModel) {
 
         double sumInsured = premiumModel.getSumInsured();
-        double years = premiumModel.getYears();
+        int years = premiumModel.getYears();
 
         premiumModel.setBasicPremium(sumInsured * DwellingConstants.BASIC_PREMIUM_RATE * years);
         premiumModel.setStfi(sumInsured * DwellingConstants.STFI_RATE * years);
         premiumModel.setEq(sumInsured * DwellingConstants.EQ_RATE * years);
 
 
-        if (premiumModel.getYears() < 10) {
+        if (years < 10) {
             premiumModel.setDiscountedBasicPremium(premiumModel.getBasicPremium() * DwellingConstants.LONG_TERM_DISCOUNT.get(years));
             //calculateLongTermDiscount(premiumModel,premiumModel.getBasicPremium(),premiumModel.getStfi(),premiumModel.getEq());
         } else {
