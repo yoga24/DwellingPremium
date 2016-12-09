@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
                         Intent premiumIntent = new Intent(view.getContext(), PremiumActivity.class);
                         premiumIntent.putExtra(DwellingConstants.PREMIUM_OBJECT_KEY, premiumModel);
-                        premiumIntent.putExtra(DwellingConstants.YEARS_INSURED_KEY,yearsInsured);
+                        premiumIntent.putExtra(DwellingConstants.YEARS_INSURED_KEY, yearsInsured);
 
                         startActivity(premiumIntent);
 
@@ -78,33 +78,34 @@ public class MainActivity extends AppCompatActivity {
     private void calculatePremiumValues(PremiumModel premiumModel) {
 
         double sumInsured = premiumModel.getSumInsured();
+        double years = premiumModel.getYears();
 
-        premiumModel.setBasicPremium(sumInsured * DwellingConstants.BASIC_PREMIUM_RATE);
-        premiumModel.setStfi(sumInsured * DwellingConstants.STFI_RATE);
-        premiumModel.setEq(sumInsured * DwellingConstants.EQ_RATE);
+        premiumModel.setBasicPremium(sumInsured * DwellingConstants.BASIC_PREMIUM_RATE * years);
+        premiumModel.setStfi(sumInsured * DwellingConstants.STFI_RATE * years);
+        premiumModel.setEq(sumInsured * DwellingConstants.EQ_RATE * years);
 
 
         if (premiumModel.getYears() < 10) {
-            calculateLongTermDiscount(premiumModel,premiumModel.getBasicPremium(),premiumModel.getStfi(),premiumModel.getEq());
+            premiumModel.setDiscountedBasicPremium(premiumModel.getBasicPremium() * DwellingConstants.LONG_TERM_DISCOUNT.get(years));
+            //calculateLongTermDiscount(premiumModel,premiumModel.getBasicPremium(),premiumModel.getStfi(),premiumModel.getEq());
         } else {
             premiumModel.setDiscountedBasicPremium(premiumModel.getBasicPremium() * DwellingConstants.LONG_TERM_DISCOUNT.get(10));
-            premiumModel.setTotalPremium(
-                    (int)((premiumModel.getBasicPremium() - premiumModel.getDiscountedBasicPremium()) + premiumModel.getStfi() + premiumModel.getEq())
-            );
-            premiumModel.setServiceTax(
-                    (int)(premiumModel.getTotalPremium() * DwellingConstants.SERVICE_TAX)
-            );
-
-            premiumModel.setGrandTotal(premiumModel.getTotalPremium() + premiumModel.getServiceTax());
         }
+        premiumModel.setTotalPremium(
+                (int) ((premiumModel.getBasicPremium() - premiumModel.getDiscountedBasicPremium()) + premiumModel.getStfi() + premiumModel.getEq())
+        );
+        premiumModel.setServiceTax(
+                (int) (premiumModel.getTotalPremium() * DwellingConstants.SERVICE_TAX)
+        );
+        premiumModel.setGrandTotal(premiumModel.getTotalPremium() + premiumModel.getServiceTax());
 
     }
 
-    private void calculateLongTermDiscount(PremiumModel premiumModel, double basicPremium,double stfi,double eq) {
+    private void calculateLongTermDiscount(PremiumModel premiumModel, double basicPremium, double stfi, double eq) {
 
-        for(int index = 1 ; index <= 10 ; index++)   {
+        for (int index = 1; index <= 10; index++) {
             double discountedPremium = basicPremium * DwellingConstants.LONG_TERM_DISCOUNT.get(index);
-            int totalPremium = (int)((basicPremium - discountedPremium) + stfi + eq);
+            int totalPremium = (int) ((basicPremium - discountedPremium) + stfi + eq);
             int serviceTax = (int) (totalPremium * DwellingConstants.SERVICE_TAX);
             int grandTotal = totalPremium + serviceTax;
 
@@ -114,6 +115,5 @@ public class MainActivity extends AppCompatActivity {
             premiumModel.getGrandTotalList().add(grandTotal);
 
         }
-
     }
 }

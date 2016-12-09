@@ -50,13 +50,15 @@ public class PremiumActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        Log.i(LOG_TAG,"Activity OptionMenu Creation");
         return super.onCreateOptionsMenu(menu);
+        //return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Log.i(LOG_TAG,"Activity MenuListener Called");
-        return false;
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -112,6 +112,8 @@ public class PremiumDetailFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
+        Log.i(LOG_TAG, "***Fragment OptionsMenu Creation");
+
         inflater.inflate(R.menu.premium_detail_menu, menu);
         //Read the share menu item
         MenuItem shareItem = menu.findItem(R.id.menu_item_share);
@@ -124,8 +126,9 @@ public class PremiumDetailFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        Log.i(LOG_TAG,"Optin Item Clicked");
+        Log.i(LOG_TAG, "***Option Item Clicked");
         if (item.getItemId() == R.id.menu_item_share) {
+            Log.i(LOG_TAG, "*** ShareItem Clicked");
             mShareActionProvider.setShareIntent(createShareIntent());
             return true;
         }

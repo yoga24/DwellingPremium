@@ -16,6 +16,18 @@ public class PremiumModel implements Serializable{
     private double eq;
     private double discountedBasicPremium;
     private int totalPremium;
+    private int serviceTax;
+    private int grandTotal;
+
+    private List<Double> discountedBasicPremiumList= new ArrayList<>();
+    private List<Integer> totalPremiumList = new ArrayList<>();
+    private List<Integer> serviceTaxList= new ArrayList<>();
+    private List<Integer> grandTotalList= new ArrayList<>();
+
+    public PremiumModel(double sumInsured,int years)    {
+        this.sumInsured = sumInsured;
+        this.years = years;
+    }
 
     public double getSumInsured() {
         return sumInsured;
@@ -119,19 +131,6 @@ public class PremiumModel implements Serializable{
 
     public void setGrandTotalList(List<Integer> grandTotalList) {
         this.grandTotalList = grandTotalList;
-    }
-
-    private int serviceTax;
-    private int grandTotal;
-
-    private List<Double> discountedBasicPremiumList= new ArrayList<>();
-    private List<Integer> totalPremiumList = new ArrayList<>();
-    private List<Integer> serviceTaxList= new ArrayList<>();
-    private List<Integer> grandTotalList= new ArrayList<>();
-
-    public PremiumModel(double sumInsured,int years)    {
-        this.sumInsured = sumInsured;
-        this.years = years;
     }
 
 }
