@@ -13,8 +13,6 @@ import android.widget.Toast;
 import com.cyorg.uiic.dwellingpremium.model.PremiumModel;
 import com.cyorg.uiic.dwellingpremium.utils.DwellingConstants;
 
-import org.json.JSONObject;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
@@ -30,12 +28,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        sumTextInputLayout = (TextInputLayout) findViewById(R.id.edit_layout_sum_insured);
-        yearsTextInputLayout = (TextInputLayout) findViewById(R.id.edit_layout_years_insured);
-        sumInsuredEditText = (EditText) findViewById(R.id.edit_sum_insured);
-        yearsInsuredEditText = (EditText) findViewById(R.id.edit_years_insured);
-        button = (Button) findViewById(R.id.main_cal_premium_button);
+//        sumTextInputLayout = (TextInputLayout) findViewById(R.id.edit_layout_sum_insured);
+//        yearsTextInputLayout = (TextInputLayout) findViewById(R.id.edit_layout_years_insured);
+//        sumInsuredEditText = (EditText) findViewById(R.id.edit_sum_insured);
+//        yearsInsuredEditText = (EditText) findViewById(R.id.edit_years_insured);
+//        button = (Button) findViewById(R.id.main_cal_premium_button);
 
 
         button.setOnClickListener(new View.OnClickListener() {

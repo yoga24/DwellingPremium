@@ -6,6 +6,12 @@
     <string name="main_calculate_premium_button">Calculate Premium</string>
 
     <string name="sum_insured_extra_key">sumInsured</string>
+    
+    <!-- Premium Scheme -->
+    <string-array name="scheme_array">
+        <item>Scheme A</item>
+        <item>Scheme B</item>
+    </string-array>
 
 
     <!-- Detail Fragment Hint -->

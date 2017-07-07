@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="premium"
+            type="com.cyorg.uiic.dwellingpremium.model.Premium"/>
+    </data>
 
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
-            <!--<TableRow
+            <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="12dp">
@@ -29,7 +35,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|start"
                     android:paddingLeft="24dp"
-                    android:text=""
+                    android:text="@{String.valueOf(premium.sumInsured)}"
                     android:textAllCaps="true"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -56,7 +62,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|start"
                     android:paddingLeft="24dp"
-                    android:text=""
+                    android:text="@{String.valueOf(premium.years)}"
                     android:textAllCaps="true"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -83,7 +89,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|start"
                     android:paddingLeft="24dp"
-                    android:text=""
+                    android:text="@{String.valueOf(premium.basicPremium)}"
                     android:textAllCaps="true"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -110,7 +116,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|start"
                     android:paddingLeft="24dp"
-                    android:text=""
+                    android:text="@{String.valueOf(premium.stfi)}"
                     android:textAllCaps="true"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -137,13 +143,14 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|start"
                     android:paddingLeft="24dp"
-                    android:text=""
+                    android:text="@{String.valueOf(premium.eq)}"
                     android:textAllCaps="true"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
             </TableRow>
 
             <TableRow
+                android:id="@+id/table_row_discount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="12dp">
@@ -165,7 +172,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|start"
                     android:paddingLeft="24dp"
-                    android:text=""
+                    android:text="@{String.valueOf(premium.discountedBasicPremium)}"
                     android:textAllCaps="true"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -192,7 +199,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|start"
                     android:paddingLeft="24dp"
-                    android:text=""
+                    android:text="@{String.valueOf(premium.totalPremium)}"
                     android:textAllCaps="true"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -219,7 +226,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|start"
                     android:paddingLeft="24dp"
-                    android:text=""
+                    android:text="@{String.valueOf(premium.serviceTax)}"
                     android:textAllCaps="true"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -246,11 +253,13 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical|start"
                     android:paddingLeft="24dp"
-                    android:text=""
+                    android:text="@{String.valueOf(premium.grandTotal)}"
                     android:textAllCaps="true"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            </TableRow>-->
+            </TableRow>
 
         </TableLayout>
-</ScrollView>
+    </ScrollView>
+
+</layout>
