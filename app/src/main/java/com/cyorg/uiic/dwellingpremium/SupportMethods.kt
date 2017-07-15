@@ -20,14 +20,6 @@ fun EditText.isValidInt(): Boolean {
     return true
 }
 
-fun EditText.isValidPercentage() : Boolean {
-    if(this.isValidInt())   {
-        if(this.toInt() in 1..99)
-            return true
-    }
-    return false
-}
-
 fun EditText.toLong(): Long {
     try {
         return this.text.toString().toLong()

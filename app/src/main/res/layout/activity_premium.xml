@@ -1,6 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="premium"
+            type="com.cyorg.uiic.dwellingpremium.model.Premium"/>
+    </data>
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/premium_container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/detail_hint_sum_insured"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearance" />
+
+                <TextView
+                    android:id="@+id/detail_text_sum_insured"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:paddingLeft="24dp"
+                    android:text="@{@string/rupee_format(String.valueOf(premium.sumInsured))}"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/detail_hint_years"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearance" />
+
+                <TextView
+                    android:id="@+id/detail_text_years"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:paddingLeft="24dp"
+                    android:text="@{@string/rupee_format(String.valueOf(premium.years))}"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/detail_hint_basic_premium"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearance" />
+
+                <TextView
+                    android:id="@+id/detail_text_basic_premium"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:paddingLeft="24dp"
+                    android:text="@{@string/rupee_format(String.valueOf(premium.basicPremium))}"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/detail_hint_stfi"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearance" />
+
+                <TextView
+                    android:id="@+id/detail_text_stfi"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:paddingLeft="24dp"
+                    android:text="@{@string/rupee_format(String.valueOf(premium.stfi))}"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/detail_hint_eq"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearance" />
+
+                <TextView
+                    android:id="@+id/detail_text_eq"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:paddingLeft="24dp"
+                    android:text="@{@string/rupee_format(String.valueOf(premium.eq))}"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row_discount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:id="@+id/detail_label_text_discounted_premium"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/detail_hint_discounted_premium"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearance" />
+
+                <TextView
+                    android:id="@+id/detail_text_discounted_premium"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:paddingLeft="24dp"
+                    android:text="@{@string/rupee_format(String.valueOf(premium.discountedBasicPremium))}"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/detail_hint_premium_total"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearance" />
+
+                <TextView
+                    android:id="@+id/detail_text_premium_total"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:paddingLeft="24dp"
+                    android:text="@{@string/rupee_format(String.valueOf(premium.totalPremium))}"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:id="@+id/detail_label_service_tax"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/detail_hint_service_tax"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearance" />
+
+                <TextView
+                    android:id="@+id/detail_text_service_tax"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:paddingLeft="24dp"
+                    android:text="@{@string/rupee_format(String.valueOf(premium.serviceTax))}"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|end"
+                    android:text="@string/detail_hint_grand_total"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearance" />
+
+                <TextView
+                    android:id="@+id/detail_text_grand_total"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|start"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:text="@{@string/rupee_format(String.valueOf(premium.grandTotal))}"
+                    android:textAllCaps="true"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
+
+</layout>

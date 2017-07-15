@@ -1,7 +1,7 @@
 package com.cyorg.uiic.dwellingpremium.model
 
+import android.util.Log
 import com.cyorg.uiic.dwellingpremium.utils.DwellingConstants
-import com.cyorg.uiic.dwellingpremium.utils.DwellingConstants.LONG_TERM_DISCOUNT
 import java.io.Serializable
 
 /**
@@ -9,30 +9,28 @@ import java.io.Serializable
  */
 data class Premium(var sumInsured: Long,
                    var years: Int,
-                   var basicPremium: Double = 0.0,
-                   var stfi: Double = 0.0,
-                   var eq: Double = 0.0,
-                   var discountedBasicPremium: Double = 0.0,
-                   var totalPremium: Double = 0.0,
-                   var serviceTax:Double = 0.0,
-                   var grandTotal: Double = 0.0) : Serializable {
+                   var basicPremium: Long = 0L,
+                   var stfi: Long = 0L,
+                   var eq: Long = 0L,
+                   var discountedBasicPremium: Long = 0L,
+                   var totalPremium: Long = 0L,
+                   var serviceTax:Long = 0L,
+                   var grandTotal: Long = 0L) : Serializable {
 
     fun calculatePremium(scheme:String = Scheme.Scheme_A.value)  {
-        basicPremium = sumInsured * DwellingConstants.BASIC_PREMIUM_RATE * years
-        stfi = sumInsured * DwellingConstants.STFI_RATE * years
-        eq = sumInsured * DwellingConstants.EQ_RATE * years
+        basicPremium = Math.round(sumInsured * DwellingConstants.BASIC_PREMIUM_RATE * years)
+        stfi = Math.round(sumInsured * DwellingConstants.STFI_RATE * years)
+        eq = Math.round(sumInsured * DwellingConstants.EQ_RATE * years)
 
-        if(scheme == Scheme.Scheme_A.value)
-            discountedBasicPremium = 0.0
-        else{
+        if(scheme == Scheme.Scheme_B.value) {
             if(years < 10)
-                discountedBasicPremium = basicPremium * (years * 5)
+                discountedBasicPremium = Math.round(basicPremium * ((years * 5)/100.0))
             else
-                discountedBasicPremium = basicPremium * (50)
+                discountedBasicPremium = Math.round(basicPremium * (50.0/100))
         }
 
-        totalPremium = basicPremium - discountedBasicPremium
-        serviceTax = totalPremium * DwellingConstants.SERVICE_TAX
+        totalPremium = basicPremium - discountedBasicPremium + stfi + eq
+        serviceTax = Math.round(totalPremium * DwellingConstants.SERVICE_TAX)
         grandTotal = totalPremium + serviceTax
     }
 
