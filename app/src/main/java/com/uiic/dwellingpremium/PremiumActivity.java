@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -20,9 +22,11 @@ public class PremiumActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = PremiumActivity.class.getSimpleName();
     Premium premium;
+    String scheme;
 
     TextView sumInsured, yearsInsured, basicPremium, stfi, eq, totalPremium, discountedBasicPremium, serviceTax, grandTotal;
     TextView labelDiscountedPremium;
+    TableRow discountTableRow;
 
     private ShareActionProvider mShareActionProvider;
     DecimalFormat decimalFormat = new DecimalFormat("\u20B9 ##,##,##,##,###.##");
@@ -33,6 +37,7 @@ public class PremiumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_premium);
 
         premium = (Premium) getIntent().getSerializableExtra(DwellingConstants.PREMIUM_OBJECT_KEY);
+        scheme = (String) getIntent().getSerializableExtra(DwellingConstants.SCHEME_KEY);
 
         //Initialize TextViews
         sumInsured = (TextView) findViewById(R.id.detail_text_sum_insured);
@@ -47,12 +52,18 @@ public class PremiumActivity extends AppCompatActivity {
 
         labelDiscountedPremium = (TextView) findViewById(R.id.detail_label_text_discounted_premium);
 
+        discountTableRow = findViewById(R.id.table_row_discount);
+
         //Set CommonValues for Premium
         sumInsured.setText(decimalFormat.format(premium.getSumInsured()));
         basicPremium.setText(decimalFormat.format(premium.getBasicPremium()));
         stfi.setText(decimalFormat.format(premium.getStfi()));
         eq.setText(decimalFormat.format(premium.getEq()));
         yearsInsured.setText(String.valueOf(premium.getYears()));
+
+        if (!DwellingConstants.SCHEME_B.equals(scheme)) {
+            discountTableRow.setVisibility(View.GONE);
+        }
 
         if (premium.getYears() > 10) {
             labelDiscountedPremium.setText(
@@ -113,11 +124,14 @@ public class PremiumActivity extends AppCompatActivity {
                         getString(R.string.detail_hint_years) + " : " + premium.getYears() + " years\n" +
                         getString(R.string.detail_hint_basic_premium) + " : Rs." + decimalFormat.format(premium.getBasicPremium()) + "\n" +
                         getString(R.string.detail_hint_stfi) + " : Rs." + decimalFormat.format(premium.getStfi()) + "\n" +
-                        getString(R.string.detail_hint_eq) + " : Rs." + decimalFormat.format(premium.getEq()) + "\n" +
-                        labelDiscountedPremium.getText().toString() + " : Rs." + decimalFormat.format(premium.getDiscountedBasicPremium()) + "\n" +
-                        getString(R.string.detail_hint_premium_total) + " : Rs." + decimalFormat.format(premium.getTotalPremium()) + "\n" +
-                        getString(R.string.detail_hint_service_tax) + " : Rs." + decimalFormat.format(premium.getServiceTax()) + "\n" +
-                        getString(R.string.detail_hint_grand_total) + " : Rs." + decimalFormat.format(premium.getGrandTotal());
+                        getString(R.string.detail_hint_eq) + " : Rs." + decimalFormat.format(premium.getEq()) + "\n";
+        if (DwellingConstants.SCHEME_B.equals(scheme)) {
+            shareString = shareString + labelDiscountedPremium.getText().toString() + " : Rs." + decimalFormat.format(premium.getDiscountedBasicPremium()) + "\n";
+        }
+        shareString = shareString +
+                getString(R.string.detail_hint_premium_total) + " : Rs." + decimalFormat.format(premium.getTotalPremium()) + "\n" +
+                getString(R.string.detail_hint_service_tax) + " : Rs." + decimalFormat.format(premium.getServiceTax()) + "\n" +
+                getString(R.string.detail_hint_grand_total) + " : Rs." + decimalFormat.format(premium.getGrandTotal());
 
         return shareString;
     }

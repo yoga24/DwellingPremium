@@ -7,6 +7,9 @@ public class DwellingConstants {
 
     public static final String YEARS_INSURED_KEY = "years";
     public static final String PREMIUM_OBJECT_KEY = "premiumObjectModel";
+    public static final String SCHEME_KEY = "PREMIUM_SCHEME";
+    public static final String SCHEME_A = "Scheme A";
+    public static final String SCHEME_B = "Scheme B";
 
     public static final Map<Integer, Double> BASIC_PREMIUM_RATE = new HashMap<>();
     public static final double STFI_RATE = 0.075 / 1000;

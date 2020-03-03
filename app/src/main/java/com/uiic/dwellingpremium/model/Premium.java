@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 import static com.uiic.dwellingpremium.utils.DwellingConstants.BASIC_PREMIUM_RATE;
 import static com.uiic.dwellingpremium.utils.DwellingConstants.LONG_TERM_DISCOUNT;
+import static com.uiic.dwellingpremium.utils.DwellingConstants.SCHEME_B;
 import static com.uiic.dwellingpremium.utils.DwellingConstants.SERVICE_TAX;
 
 public class Premium implements Serializable {
@@ -20,10 +21,11 @@ public class Premium implements Serializable {
     private int serviceTax;
     private int grandTotal;
 
-    public Premium(double sumInsured, int years) {
+    public Premium(double sumInsured, int years, String scheme) {
         this.sumInsured = sumInsured;
         this.years = years;
-        calculatePremium();
+        this.discountedBasicPremium = 0;
+        calculatePremium(scheme);
     }
 
     public double getSumInsured() {
@@ -98,7 +100,7 @@ public class Premium implements Serializable {
         this.grandTotal = grandTotal;
     }
 
-    private void calculatePremium() {
+    private void calculatePremium(String scheme) {
 
         double premiumRate = BASIC_PREMIUM_RATE.get(10) / 1000;
         double discount = LONG_TERM_DISCOUNT.get(10) / 100;
@@ -110,7 +112,9 @@ public class Premium implements Serializable {
         this.basicPremium = sumInsured * premiumRate * years;
         this.stfi = sumInsured * DwellingConstants.STFI_RATE * years;
         this.eq = sumInsured * DwellingConstants.EQ_RATE * years;
-        this.discountedBasicPremium = this.basicPremium * discount;
+        if (SCHEME_B.equals(scheme)) {
+            this.discountedBasicPremium = this.basicPremium * discount;
+        }
         this.totalPremium = (int) ((this.basicPremium - this.discountedBasicPremium) + this.stfi + this.eq);
         this.serviceTax = (int) (this.totalPremium * SERVICE_TAX);
         this.grandTotal = this.totalPremium + this.serviceTax;

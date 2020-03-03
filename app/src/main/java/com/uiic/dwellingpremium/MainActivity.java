@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextInputLayout yearsTextInputLayout;
     EditText sumInsuredEditText;
     EditText yearsInsuredEditText;
+    Spinner schemeSpinner;
     Button button;
 
     @Override
@@ -34,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         yearsTextInputLayout = findViewById(R.id.edit_layout_years_insured);
         sumInsuredEditText = findViewById(R.id.edit_sum_insured);
         yearsInsuredEditText = findViewById(R.id.edit_years_insured);
+        schemeSpinner = findViewById(R.id.spinner_premium_scheme);
         button = findViewById(R.id.main_cal_premium_button);
-
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,12 +55,14 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(LOG_TAG, "SumInsured and Years have been entered");
                         double sumInsured = Double.parseDouble(sumInsuredEditText.getText().toString());
                         int yearsInsured = Integer.parseInt(yearsInsuredEditText.getText().toString());
+                        String selectedScheme = schemeSpinner.getSelectedItem().toString();
 
-                        Premium premium = new Premium(sumInsured, yearsInsured);
+                        Premium premium = new Premium(sumInsured, yearsInsured, selectedScheme);
 
                         Intent premiumIntent = new Intent(view.getContext(), PremiumActivity.class);
                         premiumIntent.putExtra(DwellingConstants.PREMIUM_OBJECT_KEY, premium);
                         premiumIntent.putExtra(DwellingConstants.YEARS_INSURED_KEY, yearsInsured);
+                        premiumIntent.putExtra(DwellingConstants.SCHEME_KEY, selectedScheme);
 
                         startActivity(premiumIntent);
 

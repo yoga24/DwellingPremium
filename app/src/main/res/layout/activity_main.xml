@@ -43,6 +43,14 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <Spinner
+        android:id="@+id/spinner_premium_scheme"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:entries="@array/scheme_array" />
+
     <Button
         android:id="@+id/main_cal_premium_button"
         android:layout_width="match_parent"

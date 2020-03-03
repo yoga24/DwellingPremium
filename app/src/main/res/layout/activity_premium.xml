@@ -144,6 +144,7 @@
             </TableRow>
 
             <TableRow
+                android:id="@+id/table_row_discount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="12dp">
