@@ -1,0 +1,2 @@
+rootProject.name='Dwelling Premium'
+include ':app'
