@@ -102,14 +102,12 @@ public class Premium implements Serializable {
 
     private void calculatePremium(String scheme) {
 
-        double premiumRate = BASIC_PREMIUM_RATE.get(10) / 1000;
         double discount = LONG_TERM_DISCOUNT.get(10) / 100;
         if (years > 0 && years < 10) {
-            premiumRate = BASIC_PREMIUM_RATE.get(years) / 1000;
             discount = LONG_TERM_DISCOUNT.get(years) / 100;
         }
 
-        this.basicPremium = sumInsured * premiumRate * years;
+        this.basicPremium = sumInsured * BASIC_PREMIUM_RATE * years;
         this.stfi = sumInsured * DwellingConstants.STFI_RATE * years;
         this.eq = sumInsured * DwellingConstants.EQ_RATE * years;
         if (SCHEME_B.equals(scheme)) {

@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
                         Log.i(LOG_TAG, "SumInsured and Years have been entered");
                         double sumInsured = Double.parseDouble(sumInsuredEditText.getText().toString());
                         int yearsInsured = Integer.parseInt(yearsInsuredEditText.getText().toString());
-                        String selectedScheme = schemeSpinner.getSelectedItem().toString();
+//                        String selectedScheme = schemeSpinner.getSelectedItem().toString();
+                        String selectedScheme = "Scheme B";
 
                         Premium premium = new Premium(sumInsured, yearsInsured, selectedScheme);
 
