@@ -4,18 +4,12 @@ import com.uiic.dwellingpremium.utils.DwellingConstants;
 
 import java.io.Serializable;
 
-import static com.uiic.dwellingpremium.utils.DwellingConstants.BASIC_PREMIUM_RATE;
-import static com.uiic.dwellingpremium.utils.DwellingConstants.LONG_TERM_DISCOUNT;
-import static com.uiic.dwellingpremium.utils.DwellingConstants.SERVICE_TAX;
-
 public class Premium implements Serializable {
 
     private double sumInsured;
     private int years;
     private double basicPremium;
-    private double stfi;
-    private double eq;
-    private double discountedBasicPremium;
+    private double terrorism;
     private int totalPremium;
     private int serviceTax;
     private int grandTotal;
@@ -50,28 +44,12 @@ public class Premium implements Serializable {
         this.basicPremium = basicPremium;
     }
 
-    public double getStfi() {
-        return stfi;
+    public double getTerrorism() {
+        return terrorism;
     }
 
-    public void setStfi(double stfi) {
-        this.stfi = stfi;
-    }
-
-    public double getEq() {
-        return eq;
-    }
-
-    public void setEq(double eq) {
-        this.eq = eq;
-    }
-
-    public double getDiscountedBasicPremium() {
-        return discountedBasicPremium;
-    }
-
-    public void setDiscountedBasicPremium(double discountedBasicPremium) {
-        this.discountedBasicPremium = discountedBasicPremium;
+    public void setTerrorism(double terrorism) {
+        this.terrorism = terrorism;
     }
 
     public int getTotalPremium() {
@@ -100,19 +78,10 @@ public class Premium implements Serializable {
 
     private void calculatePremium() {
 
-        double premiumRate = BASIC_PREMIUM_RATE.get(10) / 1000;
-        double discount = LONG_TERM_DISCOUNT.get(10) / 100;
-        if (years > 0 && years < 10) {
-            premiumRate = BASIC_PREMIUM_RATE.get(years) / 1000;
-            discount = LONG_TERM_DISCOUNT.get(years) / 100;
-        }
-
-        this.basicPremium = sumInsured * premiumRate * years;
-        this.stfi = sumInsured * DwellingConstants.STFI_RATE * years;
-        this.eq = sumInsured * DwellingConstants.EQ_RATE * years;
-        this.discountedBasicPremium = this.basicPremium * discount;
-        this.totalPremium = (int) ((this.basicPremium - this.discountedBasicPremium) + this.stfi + this.eq);
-        this.serviceTax = (int) (this.totalPremium * SERVICE_TAX);
+        this.basicPremium = sumInsured * DwellingConstants.BASIC_PREMIUM_RATE * years;
+        this.terrorism = sumInsured * DwellingConstants.TERRORISM * years;
+        this.totalPremium = (int) (this.basicPremium + this.terrorism);
+        this.serviceTax = (int) (this.totalPremium * DwellingConstants.SERVICE_TAX);
         this.grandTotal = this.totalPremium + this.serviceTax;
 
     }
