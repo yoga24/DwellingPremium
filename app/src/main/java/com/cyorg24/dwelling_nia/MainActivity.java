@@ -1,4 +1,4 @@
-package com.uiic.dwellingpremium;
+package com.cyorg24.dwelling_nia;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.uiic.dwellingpremium.model.Premium;
-import com.uiic.dwellingpremium.utils.DwellingConstants;
+import com.cyorg24.dwelling_nia.model.Premium;
+import com.cyorg24.dwelling_nia.utils.DwellingConstants;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.uiic.dwellingpremium;
+package com.cyorg24.dwelling_nia;
 
 import android.content.Context;
 
