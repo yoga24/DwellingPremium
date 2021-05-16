@@ -1,4 +1,4 @@
-package com.uiic.dwellingpremium;
+package com.cyorg24.dwelling_uiic;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.ShareActionProvider;
 import androidx.core.view.MenuItemCompat;
 
-import com.uiic.dwellingpremium.model.Premium;
-import com.uiic.dwellingpremium.utils.DwellingConstants;
+import com.cyorg24.dwelling_uiic.model.Premium;
+import com.cyorg24.dwelling_uiic.utils.DwellingConstants;
 
 import java.text.DecimalFormat;
 

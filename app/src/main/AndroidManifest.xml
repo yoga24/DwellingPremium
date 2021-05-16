@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.uiic.dwellingpremium">
+    package="com.cyorg24.dwelling_uiic">
 
     <application
         android:allowBackup="true"

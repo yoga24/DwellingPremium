@@ -1,4 +1,4 @@
-package com.uiic.dwellingpremium;
+package com.cyorg24.dwelling_uiic;
 
 import org.junit.Test;
 

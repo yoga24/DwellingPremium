@@ -1,7 +1,4 @@
-package com.uiic.dwellingpremium.utils;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.cyorg24.dwelling_uiic.utils;
 
 public class DwellingConstants {
 
