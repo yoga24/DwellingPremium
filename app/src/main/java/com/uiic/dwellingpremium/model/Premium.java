@@ -9,7 +9,6 @@ public class Premium implements Serializable {
     private double sumInsured;
     private int years;
     private double basicPremium;
-    private double terrorism;
     private int totalPremium;
     private int serviceTax;
     private int grandTotal;
@@ -44,14 +43,6 @@ public class Premium implements Serializable {
         this.basicPremium = basicPremium;
     }
 
-    public double getTerrorism() {
-        return terrorism;
-    }
-
-    public void setTerrorism(double terrorism) {
-        this.terrorism = terrorism;
-    }
-
     public int getTotalPremium() {
         return totalPremium;
     }
@@ -78,9 +69,8 @@ public class Premium implements Serializable {
 
     private void calculatePremium() {
 
-        this.basicPremium = sumInsured * DwellingConstants.BASIC_PREMIUM_RATE * years;
-        this.terrorism = sumInsured * DwellingConstants.TERRORISM * years;
-        this.totalPremium = (int) (this.basicPremium + this.terrorism);
+        this.basicPremium = (int) (sumInsured * DwellingConstants.BASIC_PREMIUM_RATE * years);
+        this.totalPremium = (int) (this.basicPremium);
         this.serviceTax = (int) (this.totalPremium * DwellingConstants.SERVICE_TAX);
         this.grandTotal = this.totalPremium + this.serviceTax;
 

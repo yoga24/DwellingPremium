@@ -21,7 +21,7 @@ public class PremiumActivity extends AppCompatActivity {
     private static final String LOG_TAG = PremiumActivity.class.getSimpleName();
     Premium premium;
 
-    TextView sumInsured, yearsInsured, basicPremium, terrorism, totalPremium, serviceTax, grandTotal;
+    TextView sumInsured, yearsInsured, basicPremium, totalPremium, serviceTax, grandTotal;
 
     private ShareActionProvider mShareActionProvider;
     DecimalFormat decimalFormat = new DecimalFormat("\u20B9 ##,##,##,##,###.##");
@@ -37,7 +37,6 @@ public class PremiumActivity extends AppCompatActivity {
         sumInsured = (TextView) findViewById(R.id.detail_text_sum_insured);
         yearsInsured = (TextView) findViewById(R.id.detail_text_years);
         basicPremium = (TextView) findViewById(R.id.detail_text_basic_premium);
-        terrorism = (TextView) findViewById(R.id.detail_text_terrorism);
         totalPremium = (TextView) findViewById(R.id.detail_text_premium_total);
         serviceTax = (TextView) findViewById(R.id.detail_text_service_tax);
         grandTotal = (TextView) findViewById(R.id.detail_text_grand_total);
@@ -45,7 +44,6 @@ public class PremiumActivity extends AppCompatActivity {
         //Set CommonValues for Premium
         sumInsured.setText(decimalFormat.format(premium.getSumInsured()));
         basicPremium.setText(decimalFormat.format(premium.getBasicPremium()));
-        terrorism.setText(decimalFormat.format(premium.getTerrorism()));
         yearsInsured.setText(String.valueOf(premium.getYears()));
 
         totalPremium.setText(decimalFormat.format(premium.getTotalPremium()));
@@ -94,7 +92,6 @@ public class PremiumActivity extends AppCompatActivity {
                 getString(R.string.detail_hint_sum_insured) + " : Rs." + decimalFormat.format(premium.getSumInsured()) + "\n" +
                         getString(R.string.detail_hint_years) + " : " + premium.getYears() + " years\n" +
                         getString(R.string.detail_hint_basic_premium) + " : Rs." + decimalFormat.format(premium.getBasicPremium()) + "\n" +
-                        getString(R.string.detail_hint_terrorism) + " : Rs." + decimalFormat.format(premium.getTerrorism()) + "\n" +
                         getString(R.string.detail_hint_premium_total) + " : Rs." + decimalFormat.format(premium.getTotalPremium()) + "\n" +
                         getString(R.string.detail_hint_service_tax) + " : Rs." + decimalFormat.format(premium.getServiceTax()) + "\n" +
                         getString(R.string.detail_hint_grand_total) + " : Rs." + decimalFormat.format(premium.getGrandTotal());
