@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dwelling - NIA</string>
+    <string name="app_name">Dwelling-NIA</string>
 
     <string name="hint_edit_sum_insured">Sum Insured</string>
     <string name="hint_edit_years_insured">Years</string>
