@@ -1,4 +1,4 @@
-package com.cyorg24.dwelling_uiic;
+package com.cyorg24.dwelling;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.cyorg24.dwelling_uiic.model.Premium;
-import com.cyorg24.dwelling_uiic.utils.DwellingConstants;
+import com.cyorg24.dwelling.model.Premium;
+import com.cyorg24.dwelling.utils.DwellingConstants;
 
 public class MainActivity extends AppCompatActivity {
 

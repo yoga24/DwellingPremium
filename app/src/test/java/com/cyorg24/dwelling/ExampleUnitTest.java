@@ -1,4 +1,4 @@
-package com.cyorg24.dwelling_uiic;
+package com.cyorg24.dwelling;
 
 import org.junit.Test;
 

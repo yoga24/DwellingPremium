@@ -1,6 +1,6 @@
-package com.cyorg24.dwelling_uiic.model;
+package com.cyorg24.dwelling.model;
 
-import com.cyorg24.dwelling_uiic.utils.DwellingConstants;
+import com.cyorg24.dwelling.utils.DwellingConstants;
 
 import java.io.Serializable;
 
