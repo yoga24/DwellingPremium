@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.cyorg24.dwelling_oic"
+        applicationId "com.cyorg24.dwelling_national"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 3
