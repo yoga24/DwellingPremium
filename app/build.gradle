@@ -4,13 +4,28 @@ android {
     compileSdkVersion 33
 
     defaultConfig {
-        applicationId "com.cyorg24.dwelling_nia"
+//        applicationId "com.cyorg24.dwelling_nia"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode 3
         versionName "3.0.0-J"
 
 //        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    productFlavors {
+        flavorDimensions += "rate"
+
+        premium013 {
+            applicationId "com.cyorg24.dwelling013"
+            resValue "string", "app_name", "Dwelling 13"
+            buildConfigField  "double", "BASIC_PREMIUM", "0.13"
+        }
+        premium015 {
+            applicationId "com.cyorg24.dwelling015"
+            resValue "string", "app_name", "Dwelling 15"
+            buildConfigField  "double", "BASIC_PREMIUM", "0.15"
+        }
     }
 
     buildTypes {
