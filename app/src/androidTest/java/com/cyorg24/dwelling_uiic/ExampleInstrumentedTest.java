@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.uiic.dwellingpremium", appContext.getPackageName());
+        assertEquals("com.cyorg24.dwelling_multi", appContext.getPackageName());
     }
 }
