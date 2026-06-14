@@ -8,8 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.ShareActionProvider;
-import androidx.core.view.MenuItemCompat;
 
 import com.cyorg24.dwelling_uiic.model.Premium;
 import com.cyorg24.dwelling_uiic.utils.DwellingConstants;
@@ -23,7 +21,6 @@ public class PremiumActivity extends AppCompatActivity {
 
     TextView sumInsured, yearsInsured, basicPremium, terrorism, totalPremium, serviceTax, grandTotal;
 
-    private ShareActionProvider mShareActionProvider;
     DecimalFormat decimalFormat = new DecimalFormat("\u20B9 ##,##,##,##,###.##");
 
     @Override
@@ -56,24 +53,14 @@ public class PremiumActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.premium_detail_menu, menu);
-
-        //Read the share menu item
-        MenuItem shareItem = menu.findItem(R.id.menu_item_share);
-        //Assign EasyShareAction to SHARE MenuItem
-        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
-        //Custom File to write share history
-        mShareActionProvider.setShareHistoryFileName("custom_share_history.xml");
-
         return true;
-        //return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_item_share:
-                mShareActionProvider.setShareIntent(createShareIntent());
-                return true;
+        if (item.getItemId() == R.id.menu_item_share) {
+            startActivity(Intent.createChooser(createShareIntent(), getString(R.string.share_premium)));
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -102,4 +89,3 @@ public class PremiumActivity extends AppCompatActivity {
         return shareString;
     }
 }
-
