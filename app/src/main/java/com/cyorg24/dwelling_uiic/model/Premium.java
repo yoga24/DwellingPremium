@@ -79,11 +79,12 @@ public class Premium implements Serializable {
     private void calculatePremium() {
 
         this.basicPremium = sumInsured * DwellingConstants.BASIC_PREMIUM_RATE * years;
-        this.terrorism = sumInsured * DwellingConstants.TERRORISM * years;
-        this.totalPremium = (int) (this.basicPremium + this.terrorism);
+        // ignore terrorism for now
+        // this.terrorism = sumInsured * DwellingConstants.TERRORISM * years;
+        // this.totalPremium = (int) (this.basicPremium + this.terrorism);
+        this.totalPremium = (int) this.basicPremium;
+
         this.serviceTax = (int) (this.totalPremium * DwellingConstants.SERVICE_TAX);
         this.grandTotal = this.totalPremium + this.serviceTax;
-
     }
-
 }
