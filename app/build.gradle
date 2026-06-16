@@ -8,7 +8,7 @@ android {
     buildToolsVersion '36.1.0'
 
     defaultConfig {
-        applicationId 'com.cyorg24.dwelling_08'
+        applicationId 'com.cyorg24.dwelling_12'
         minSdk 21
         targetSdk 36
         versionCode 3

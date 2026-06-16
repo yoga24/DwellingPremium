@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dwelling-0.08</string>
+    <string name="app_name">Dwelling-0.12</string>
 
     <string name="hint_edit_sum_insured">Sum Insured</string>
     <string name="hint_edit_years_insured">Years</string>
